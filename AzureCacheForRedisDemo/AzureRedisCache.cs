@@ -43,7 +43,7 @@ namespace AzureCacheForRedisDemo
         // Delete entity from the Redis Cache
         public static void DeleteEntity(string key)
         {
-            var cache = Connection.GetDatabase();
+            IDatabase cache = Connection.GetDatabase();
             string entityCacheKey = key + keyAppendage;
 
             // Delete Key from Redis Cache
@@ -55,7 +55,7 @@ namespace AzureCacheForRedisDemo
         {
             updateEntityInDataStore(entity);
 
-            var cache = Connection.GetDatabase();
+            IDatabase cache = Connection.GetDatabase();
             string entityCacheKey = key + keyAppendage;
 
             // Delete Key from Redis Cache
