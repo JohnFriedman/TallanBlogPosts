@@ -12,14 +12,14 @@ namespace AzureCacheForRedisDemo
         {
             dwarves = initializeSevenDwarves();
 
-            Dwarf doc = AzureRedisCache.GetEntity("Doc", GetDwarfByName, TimeSpan.FromSeconds(5));
+            Dwarf doc = AzureRedisCache.GetEntity("Doc", GetDwarfByName, TimeSpan.FromMinutes(5));
             Console.WriteLine($"Name: {doc.Name}. Age: {doc.Age}. Is Happy?: {doc.IsHappy}.\n");
 
-            Dwarf grumpy = AzureRedisCache.GetEntity("Grumpy", GetDwarfByName, TimeSpan.FromSeconds(5));
+            Dwarf grumpy = AzureRedisCache.GetEntity("Grumpy", GetDwarfByName, TimeSpan.FromMinutes(5));
             Console.WriteLine($"Name: {grumpy.Name}. Age: {grumpy.Age}. Is Happy?: {grumpy.IsHappy}.\n");
 
             Console.WriteLine("Now it's Grumpy's Birthday!");
-            AzureRedisCache.UpdateEntity(grumpy.Name, grumpy, TriggerDwarfBirthday, TimeSpan.FromSeconds(5));
+            AzureRedisCache.UpdateEntity(grumpy.Name, grumpy, TriggerDwarfBirthday, TimeSpan.FromMinutes(5));
             Console.WriteLine($"Name: {grumpy.Name}. Age: {grumpy.Age}. Is Happy?: {grumpy.IsHappy}.");
             Console.ReadKey();
         }
